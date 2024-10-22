@@ -81,12 +81,12 @@
                     $url = '?start_date=' . $start_date . '&end_date=' . $end_date;
                 @endphp
 
-                <li class="nav-item has-treeview">
+               <!-- <li class="nav-item has-treeview">
                     <a href="{{ route('payments.index') }}" class="nav-link {{ activeSegment('payments') }}">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>Descargas</p>
                     </a>
-                </li>
+                </li>-->
 
                 @if (auth()->user()->rol == 'ADMINISTRADOR')
                     <li class="nav-item has-treeview">
@@ -99,14 +99,14 @@
 
 
 
-                <li class="nav-item has-treeview">
+                <!--<li class="nav-item has-treeview">
                     <a href="{{ route('users.edit', auth()->user()->id) }}"
                         class="nav-link {{ activeSegment('users') }}">
                         <i class="nav-icon fas fa-user-edit"></i>
                         <p>Modificar mis datos</p>
                     </a>
 
-                </li>
+                </li>-->
 
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
