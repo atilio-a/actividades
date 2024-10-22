@@ -9,9 +9,29 @@ use App\Models\Team;
 
 class TeamController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $teams = Team::with('entity')->get();
+       
+        // Iniciamos la consulta para obtener las acciones con la relación de 'localidad'
+        $query = Team::query();
+
+        // Verificamos si hay un término de búsqueda
+        if ($request->has('search') && $request->search != null) {
+            $search = $request->search;
+            // Filtramos las acciones por el contenido de las columnas 'nombre' y 'descripcion', o por el nombre de la localidad
+            $query->where('nombre', 'LIKE', "%$search%")
+                ->orWhere('apellido', 'LIKE', "%$search%")
+                ->orWhere('telefono', 'LIKE', "%$search%")
+                ->orWhere('mail', 'LIKE', "%$search%")
+                ->orWhereHas('entidad', function ($q) use ($search) {
+                    $q->where('nombre', 'LIKE', "%$search%");
+                });
+        }
+
+        // Ejecutamos la consulta y obtenemos las acciones filtradas
+        $teams = $query->get();
+
+        // Retornamos la vista con las acciones filtradas
         return view('teams.index', compact('teams'));
     
     }

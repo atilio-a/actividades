@@ -23,4 +23,8 @@ class Team extends Model
     {
         return $this->belongsTo(Entity::class);
     }
+    public function entidad()
+    {
+        return $this->belongsTo(Entity::class, 'entity_id');
+    }
 }
