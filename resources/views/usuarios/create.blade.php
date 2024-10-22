@@ -43,48 +43,7 @@
                 </div>
 
                 <div class="form-group col-lg-8 col-8">
-                    <label for="telefono_consultorio">Telefono Consultorio</label>
-                    <input type="text" name="telefono_consultorio" class="form-control" id="telefono_consultorio	"
-                        placeholder="Telefono Consultorio" value="{{ old('telefono_consultorio') }}">
-                </div>
-                <div class="card border-primary col-lg-8 col-8">
-                    <div class="card-header text-white bg-primary mb-3">Direccion</div>
-                    <div class="form-group">
-                        <label for="calle">Calle</label>
-                        <input type="text" name="calle" class="form-control" id="calle" placeholder="Calle"
-                            value="{{ old('calle') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="numero">numero</label>
-                        <input type="number" name="numero" class="form-control" id="numero" placeholder="numero"
-                            value="{{ old('numero') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="departamento">Departamento</label>
-                        <input type="text" name="departamento" class="form-control" id="departamento"
-                            placeholder="Departamento" value="{{ old('departamento') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ciudad">Ciudad</label>
-                        <input type="text" name="ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
-                            value="{{ old('ciudad') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pais">Pais</label>
-                        <input type="text" name="pais" class="form-control" id="pais" placeholder="Pais"
-                            value="{{ old('pais') }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="codigo_postal">Codigo Postal</label>
-                        <input type="text" name="codigo_postal" class="form-control" id="codigo_postal"
-                            placeholder="Codigo Postal" value="{{ old('codigo_postal') }}">
-                    </div>
-                </div>
+              
 
                 <div class="form-group col-lg-8 col-8">
                     <label for="email">Email</label>
@@ -96,6 +55,19 @@
                         </span>
                     @enderror
                 </div>
+
+                    
+                <div class="form-group">
+                    <label for="entity_id">Entidad</label>
+                    <select name="entity_id" class="form-control" required>
+                        <!-- Aquí debes cargar los departamentos desde tu base de datos -->
+                        @foreach ($entities as $entity)
+                            <option value="{{ $entity->id }}">{{ $entity->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
 
                 <div class="form-group col-lg-8 col-8">
                     <label for="email">Clave</label>

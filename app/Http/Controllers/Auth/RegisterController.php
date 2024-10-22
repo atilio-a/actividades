@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Entity;
+
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -48,28 +50,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'especializacion'=>['string','max:2'],
-            'calle' => ['string', 'max:255'],
-            'numero' => ['string', 'max:255'],
-            'departamento' => ['string', 'max:255'],
-            'ciudad' => ['string', 'max:255'],
-            'pais' => ['string', 'max:255'],
-            'codigo_postal' => ['string', 'max:255'],
-            'telefono' => ['string', 'max:20'],
-            
-            'telefono_consultorio' => ['string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ], [
-        'first_name.required' => 'Por favor ingrese su nombre', // custom message
-        'last_name.required' => 'Por favor ingrese su Apellido', // custom message
-        'password.min' => 'La clave debe ser de al menos 8 caracteres', // custom message
-
-        'email.unique' => 'email ya registrado', // custom message
-       ]
+        return Validator::make(
+            $data,
+            [
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ],
+            [
+                'first_name.required' => 'Por favor ingrese su nombre', // custom message
+                'last_name.required' => 'Por favor ingrese su Apellido', // custom message
+                'password.min' => 'La clave debe ser de al menos 8 caracteres', // custom message
+                'email.unique' => 'email ya registrado', // custom message
+            ]
         );
     }
 
@@ -83,18 +77,20 @@ class RegisterController extends Controller
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
-            'especializacion'=>$data['especializacion'],
             'email' => $data['email'],
-            'calle' => $data['calle'],
-            'numero' => $data['numero'],
-            'departamento' => $data['departamento'],
-            'ciudad' => $data['ciudad'],
-            'pais' => $data['pais'],
-            'codigo_postal' => $data['codigo_postal'],
             'telefono' => $data['telefono'],
-            'telefono_consultorio' => $data['telefono_consultorio'],
+            'entity_id' => $data['entity_id'],
             'rol' => 'PENDIENTE',
             'password' => Hash::make($data['password']),
+
         ]);
+    }
+    public function showRegistrationForm()
+    {
+        // Obtener todas las entidades de la base de datos
+        $entities = Entity::all();
+
+        // Pasar las entidades a la vista de registro
+        return view('auth.register', compact('entities'));
     }
 }

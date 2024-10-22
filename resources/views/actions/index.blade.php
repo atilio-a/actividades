@@ -3,7 +3,13 @@
 @section('title', ' Actividades')
 @section('content-header', ' Actividades')
 @section('content-actions')
-    <a href="{{route('actions.create')}}" class="btn btn-success"><i class="fas fa-plus"></i> Registar nueva Actividades</a>
+<br>
+    <form method="GET" action="{{ route('actions.index') }}" class="form-inline">
+        <input type="text" name="search" class="form-control w-75" placeholder="Buscar..." value="{{ request()->get('search') }}">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <br>
+    <a href="{{ route('actions.create') }}" class="btn btn-success ml-2"><i class="fas fa-plus"></i> Registrar nueva Actividad</a>
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
@@ -16,8 +22,8 @@
         <thead class="thead-dark">
             <tr>
                 <td>Actividades</td>
-                <td>descripcion</td>
-                <td>fecha</td>
+                <td>Descripcion</td>
+                <td>Fecha</td>
                 <td>Entidad</td>
                 <td>Localidad</td>
                 <td>Acciones</td>
@@ -27,7 +33,8 @@
             @foreach($actions as $accion)
             <tr>
                 <td>{{$accion->nombre}}</td>
-                <td>{{$accion->descripcion}}</td>
+                <td>{{ \Illuminate\Support\Str::limit($accion->descripcion, 150, ' (...)') }}</td>
+
                 <td>{{$accion->fecha}}</td>
                 <td>{{$accion->entidad->nombre}}</td>
                 <td>{{$accion->localidad->nombre}}</td>

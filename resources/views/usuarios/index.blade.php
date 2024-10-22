@@ -41,7 +41,7 @@
                  
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Ciudad-Depto.</th>
+                    <th>Entidad</th>
                     <th>Telefono</th>
                     <th>rol</th>
                     <th>email</th>
@@ -68,7 +68,7 @@
                         
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->last_name}}</td>
-                        <td>{{$user->ciudad}}</td>
+                        <td>{{$user->entity->nombre}}</td>
                         <td>{{$user->telefono}}</td>
                         <td>{{$user->rol}}</td>
                         <td>{{$user->email}}</td>

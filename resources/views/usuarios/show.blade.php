@@ -26,39 +26,6 @@
                 </div>
 
 
-                <div class="form-group col-lg-8 col-8">
-                    <label for="telefono_consultorio">Telefono Consultorio</label>
-                    <input type="text" name="telefono_consultorio" class="form-control" disabled
-                        id="telefono_consultorio	" placeholder="Telefono Consultorio"
-                        value="{{ old('telefono_consultorio', $user->telefono_consultorio) }}">
-                </div>
-                <div class="card border-primary col-lg-8 col-8">
-                    <div class="card-header text-white bg-primary mb-3">Direccion</div>
-                    <div class="form-group">
-                        <label for="calle">Calle</label>
-                        <input type="text" name="calle" class="form-control" id="calle" placeholder="Calle"
-                            value="{{ old('calle', $user->calle . ' - Nº ' . $user->numero) }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="departamento">Departamento</label>
-                        <input type="text" name="departamento" class="form-control" id="departamento"
-                            placeholder="Departamento" value="{{ old('departamento', $user->departamento) }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ciudad">Ciudad</label>
-                        <input type="text" name="ciudad" class="form-control" id="ciudad" placeholder="Ciudad"
-                            value="{{ old('ciudad', $user->ciudad . ', ' . $user->pais) }}">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="codigo_postal">Codigo Postal</label>
-                        <input type="text" name="codigo_postal" class="form-control" id="codigo_postal"
-                            placeholder="Codigo Postal" value="{{ old('codigo_postal', $user->codigo_postal) }}">
-                    </div>
-                </div>
 
 
                 <div class="form-group col-lg-8 col-8">
@@ -67,9 +34,9 @@
                         value="{{ old('email', $user->email) }}">
                 </div>
                 <div class="form-group col-lg-8 col-8">
-                    <label for="Rol">Email</label>
-                    <input required type="text" name="email" class="form-control" id="email" placeholder="rol"
-                        value="{{ old('rol', $user->roll) }}">
+                    <label for="entity_id">Entidad</label>
+                    <input required type="text" name="entity_id" class="form-control" id="entity_id" placeholder="rol"
+                        value="{{ old('entity_id', $user->entity->nombre) }}">
                 </div>
                 <a href="{{ route('usuarios.index') }}" class="btn btn-success"><i class="fas fa-eye"> Volver al
                         Listado</i></a>

@@ -166,7 +166,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('teams/{team}',    [TeamController::class, 'show'])->name('teams.show');
 
    
-    Route::resource('programs', ProjectController::class);
+    Route::resource('programs', ProgramController::class);
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
     Route::get('programs/{program}/edit',   [ProgramController::class, 'edit'])->name('programs.edit');
     Route::get('programs/create', [ProgramController::class, 'create'])->name('programs.create');

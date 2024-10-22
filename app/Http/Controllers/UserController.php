@@ -75,9 +75,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(User $User)
-    {
-    }
+    public function show(User $User) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -98,21 +96,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $this->validate(request(), [
-            'first_name' => 'required|string|max:40',
-            'last_name' => 'required|string|max:40',
-            'email'  => 'required|email|max:128|unique:users,email,' . $user->id,
-            
-        ],
-        [
-           'email.required' => 'El Email es obligatorio',
-  'email.max' => 'El Email no debe exceder los 128 caracteres',
-  'email.unique' => 'Ya existe un usuario con este Email',
-        ]
-     );
+        $this->validate(
+            request(),
+            [
+                'first_name' => 'required|string|max:40',
+                'last_name' => 'required|string|max:40',
+                'email'  => 'required|email|max:128|unique:users,email,' . $user->id,
+
+            ],
+            [
+                'email.required' => 'El Email es obligatorio',
+                'email.max' => 'El Email no debe exceder los 128 caracteres',
+                'email.unique' => 'Ya existe un usuario con este Email',
+            ]
+        );
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
+        $user->telefono = $request->telefono;
         $user->email = $request->email;
+        $user->entity_id = $request->entity_id;
         $user->rol = $request->rol;
         if (!empty($request->password)) {
             $user->password = Hash::make($request->password);

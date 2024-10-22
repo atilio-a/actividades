@@ -90,7 +90,7 @@
 
 <!-- Brand Logo -->
 <a href="{{route('home')}}" class="brand-link">
-    <img src="{{ asset('images/logo.jpeg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <img src="{{ asset('images/logo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="max-height:90px;opacity: .8">
     
 </a>
