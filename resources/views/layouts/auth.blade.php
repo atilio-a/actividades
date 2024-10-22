@@ -17,11 +17,11 @@
 <!-- #DACDC4,#5A6770    ---  #fffbf8,#faf2e7  b5aca3   ebecce   fffbf8   bbe9bf -->
 <style>
 .login-page{
-        background:linear-gradient(-135deg,#5A6770,#DACDC4);
+        background:linear-gradient(-135deg,#0a95f8,#DACDC4);
     }
 
     .login-box{
-        background:linear-gradient(-135deg,#faf2e7,#bbe9bf);
+        background:linear-gradient(-135deg,#faf2e7,#285b8f );
     }
     </style>
 <body class="hold-transition login-page">
@@ -29,8 +29,8 @@
         <div class="login-logo">
             <a href="{{route('home')}}" class="brand-link">
               
-                <span class="brand-text font-weight-light">Magic Aligner</span>
-                <img src="{{ asset('images/logo.jpeg') }}" alt="Magic" class="brand-image img-circle elevation-3"
+                <span class="brand-text font-weight-light">Actividades</span>
+                <img src="{{ asset('images/logo.jpg') }}" alt="Magic" class="brand-image img-circle elevation-3"
                      style="max-height:60px;opacity: .8">
                   </a>
         </div>

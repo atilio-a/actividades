@@ -8,11 +8,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
 	<!-- Log on to marco farfan 3888-15568587 for more projects -->
-    <meta name="autor" content="Marco Antonio Farfan - 3888568587 licenciadomarcofarfan@gmail.com">
+    <meta name="autor" content="equipo">
 <!-- Marco Antonio Farfan - 3888568587 licenciadomarcofarfan@gmail.com -->
 
     <!-- Google Font: Source Sans Pro -->
@@ -46,7 +50,7 @@
                         </div><!-- /.col -->
                     </div>
                 </div><!-- /.container-fluid -->
-            </section><!-- Log on to marco farfan 3888-15568587 for more projects -->
+            </section><!-- eQUIPO -->
 
             <!-- Main content -->
             <section class="content">
@@ -65,7 +69,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
-    </div><!-- Log on to marco farfan 3888-15568587 for more projects -->
+    </div><!-- eQUIPO -->
     <!-- ./wrapper -->
 
     <script src="{{ asset('js/app.js') }}"></script>

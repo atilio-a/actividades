@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-purple elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        <img src="{{ asset('images/LogoGris.png') }}" alt=" Logo" class="brand-image img-circle-32 elevation-1"
+        <img src="{{ asset('images/logo.jpg') }}" alt=" Logo" class="brand-image img-circle-32 elevation-1"
             style="max-height:40px;opacity: .8">
         <span class="brand-text font-weight-light">Actividades</span>
     </a>
@@ -31,37 +31,48 @@
                     </a>
                 </li>
 
+
+
+
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('customers.index') }}" class="nav-link {{ activeSegment('customers') }}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Pacientes</p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview d-none ">
-                    <a href="{{ route('products.index') }}" class="nav-link {{ activeSegment('products') }}">
-                        <i class="nav-icon fas fa-boxes"></i>
-                        <p>Conceptos/items</p>
+                    <a href="{{ route('actions.index') }}" class="nav-link {{ activeSegment('actions') }}">
+                        <i class="nav-icon fa fa-qrcode"></i>
+                        <p>Actividades</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('cart.index') }}" class="nav-link {{ activeSegment('cart') }}">
-                        <i class="nav-icon fas fa-cash-register"></i>
-                        <p>Nuevo Pedido</p>
+                    <a href="{{ route('localidades.index') }}" class="nav-link {{ activeSegment('localidades') }}">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>Localidades</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('orders.index') }}" class="nav-link {{ activeSegment('orders') }}">
-                        <i class="nav-icon fas fa-chart-line"></i>
-                        <p>Ordenes de Pedido</p>
+                    <a href="{{ route('entities.index') }}" class="nav-link {{ activeSegment('entities') }}">
+                        <i class="nav-icon fas fa-landmark"></i>
+                        <p>Entidades</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('teams.index') }}" class="nav-link {{ activeSegment('teams') }}">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>Personas</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('programs.index') }}" class="nav-link {{ activeSegment('program') }}">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>Programas</p>
                     </a>
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('seguimiento') }}" class="nav-link {{ activeSegment('seguimiento') }}">
-                        <i class="nav-icon fa fa-qrcode"></i>
-                        <p>Seguimiento</p>
+                    <a href="{{ route('projects.index') }}" class="nav-link {{ activeSegment('project') }}">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>Poyectos</p>
                     </a>
                 </li>
+
+
                 @php
                     $fecha = date('Y-m-d');
                     $start_date = date('Y-m-d', strtotime('-5 days', strtotime($fecha)));
