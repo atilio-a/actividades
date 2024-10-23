@@ -8,9 +8,23 @@ use App\Models\Departamento;
 
 class LocalidadController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $localidades = Localidad::with('departamento')->get();
+        // inicializamos la consulta con la variable $query
+        $query = Localidad::query();
+
+        //  me fijo si viene algun parametro de busqueda
+        if ($request->has('search')&& $request->search!= null){
+            $search = $request->search;
+            $query->where('nombre','LIKE', "%$search%")
+                ->orWhereHas('departamento',function($q) use ($search){
+                    $q->where('nombre','LIKE',"%$search%");
+                });
+
+        }
+        $localidades = $query->get();
+
+        //$localidades = Localidad::with('departamento')->get();
         return view('localidades.index', compact('localidades'));
     
     }

@@ -106,7 +106,7 @@ class UsuarioController extends Controller
 
 //        return view('teams.edit', compact('team', 'entities'));
     
-        return view('usuarios.edit',compact ('user', 'entities'))->with('user', $usuario);
+        return view('usuarios.edit',compact ('usuario', 'entities'))->with('user', $usuario);
     }
 
     /**
