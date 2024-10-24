@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Action;
 use App\Models\Departamento;
 use App\Models\Entity;
+use App\Models\Image;
 use App\Models\Localidad;
 use App\Models\Program;
 use App\Models\Project;
@@ -16,7 +17,7 @@ class ActionController extends Controller
     public function index(Request $request)
     {
         // Iniciamos la consulta para obtener las acciones con la relación de 'localidad'
-        $query = Action::with('localidad');
+        $query = Action::orderBy('id',  'desc')->with('localidad');
 
         // Verificamos si hay un término de búsqueda
         if ($request->has('search') && $request->search != null) {
@@ -79,8 +80,9 @@ class ActionController extends Controller
         $action->descripcion = $request->descripcion;
         
         $action->save();
-        return redirect()->route('outlets.create', ['action_id' => $action->id])->with('success', 'Actividad creada correctamente.');
+        //return redirect()->route('outlets.create', ['action_id' => $action->id])->with('success', 'Actividad creada correctamente.');
       
+        return redirect()->route('actions.show', $action)->with('success', 'Actividad creada correctamente.');
 
        // return redirect()->route('actions.index')->with('success', 'action creada correctamente.');
     }
@@ -89,7 +91,14 @@ class ActionController extends Controller
 
     public function show(Action $action)
     {
-        return view('actions.show', compact('action'));
+
+        $imgQuery = Image::query();
+        $imgQuery->where('action_id', '=', $action->id);
+        $imagenes = $imgQuery->paginate(5);
+        
+       //($action->mapa);
+     
+        return view('actions.show', compact('action','imagenes'));
     }
 
     // Mostrar el formulario para editar una action

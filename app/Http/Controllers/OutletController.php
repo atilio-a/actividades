@@ -66,8 +66,8 @@ class OutletController extends Controller
 
         $outlet = Outlet::create($newOutlet);
 
-       // return redirect()->route('outlets.show', $outlet);
-        return redirect()->route('outlet_map.index');
+        return redirect()->route('actions.index');
+       // return redirect()->route('outlet_map.index');
     
     }
 
@@ -86,8 +86,9 @@ class OutletController extends Controller
         $imagenes = $imgQuery->paginate(5);
         
        // print_r($imagenes);
-        
-        return view('outlets.show', compact('outlet','imagenes') );
+       return view('outlets.mostrar', compact('outlet','imagenes') );
+ 
+       // return view('outlets.show', compact('outlet','imagenes') );
     }
 
     /**

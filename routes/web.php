@@ -41,6 +41,8 @@ Route::get('generate', function () {
 */
 Route::get('/region', [OutletMapController::class, 'region'])->name('outlet_map.region');
 
+Route::get('outlets/{outlet}/show', [OutletController::class, 'show'])->name('outlets.mostrar');
+
 Route::get('pdf', [PDFController::class, 'index']);
 Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout');
 

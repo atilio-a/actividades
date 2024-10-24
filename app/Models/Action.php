@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Action extends Model
 {
@@ -31,6 +32,15 @@ class Action extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+    public function mapa(): HasOne
+    {
+        return $this->hasOne(Outlet::class);
+    }
+
+    public function imagenes()
+    {
+        return $this->hasMany(Image::class);
     }
 /*
     public function teams()

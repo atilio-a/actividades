@@ -8,9 +8,22 @@ use App\Models\Entity;
 
 class EntityController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $entities = Entity::with('entidad_padre')->get();
+        $query = Entity::query();
+
+        if ($request->has('search') && $request->search != null){
+            $search = $request->search;
+            $query->where('nombre','LIKE', "%$search%")
+                ->orWhere('descripcion','LIKE',"%$search%")
+                ->orWhereHas('entity',function($q) use ($search){
+                    $q->where('nombre','LIKE',"%$search");
+                });
+        }
+
+        $entities = $query->get();
+
+//        $entities = Entity::with('entidad_padre')->get();
         return view('entities.index', compact('entities'));
     }
 

@@ -146,9 +146,12 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="descripcion">descripcion</label>
-                    <input type="text" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror"
-                        id="descripcion" placeholder="descripcion" value="{{ old('descripcion') }}">
+                    <label for="descripcion">Descripcion</label>
+
+                    <textarea type="text" class="form-control"  placeholder="Ingrese una descripcion"  name="descripcion">{{old('descripcion')}}</textarea>
+
+                    <!--input type="textarea" name="descripcion" class="form-control @error('descripcion') is-invalid @enderror"
+                        id="descripcion" placeholder="descripcion" value="{{ old('descripcion') }}" -->
                     @error('descripcion')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

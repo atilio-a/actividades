@@ -4,6 +4,19 @@
 @section('content-header', 'Datos registrados')
 
 @section('content')
+<a href="{{ route('actions.index') }}" class="btn btn-success"><i class="fas fa-eye"> Volver al Listado de Actividades</i></a>
+@if ($action->mapa)
+
+
+    <a href="{{ route('outlets.edit',  $action->mapa) }}" class="btn btn-info"><i class="fa fa-map-marker"></i> Modificar en mapa<i class="fa fa-map-marker"></i></a>
+
+    
+@else
+<a href="{{ route('outlets.create', ['action_id' => $action->id]) }}" class="btn btn-info"><i class="fa fa-map-marker"></i> Registar en mapa<i class="fa fa-map-marker"></i></a>
+
+
+@endif
+
 
     <div class="card">
         <div class="card-body">
@@ -13,18 +26,86 @@
                 @method('PUT')
 
                 <div class="form-group col-lg-8 col-8">
-                    <label for="nombre">Nombre</label>
+                  
                     <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
-                        value="{{ old('nombre', $action->nombre . ' localidad:  ' . $action->localidad->nombre) }}">
+                        value="{{ old('Nombre', $action->nombre . '-  Localidad:  ' . $action->localidad->nombre) }}">
+                        
+                        <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
+                        value="{{ old('Entidad', $action->entidad->nombre . '- team:  ' . $action->team->nombre) }}">
 
+                        <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
+                        value="{{ old('Programa:', $action->program->nombre . '- proyecto:  ' . $action->project->nombre) }}">
+                     
+                     
+                        <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
+                        value="{{ old('direccion:', $action->direccion . '- telefono:  ' . $action->telefono) }}">
+                        <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
+                        value="{{ old('descripcion:', $action->descripcion . '- codigo:  ' . $action->codigo) }}">
+
+         
                 </div>
 
               
 
-                <a href="{{ route('actions.index') }}" class="btn btn-success"><i class="fas fa-eye"> Volver al Listado</i></a>
-
+               
             </form>
+
+            @if (count($imagenes) > 0)
+            <div class="alert alert-success">
+                <ul>
+                    @foreach ($imagenes as $imagen)
+                    
+                    <img src="{{ $imagen->image_path }}" alt="{{ $imagen->name }}" width="400" height="400">
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        
+
+            <div class="container mt-3">
+                <h3 class="text-center mb-3" style="color:#c7f8c7;"><i class="fa fa-camera" aria-hidden="true"></i> Agregar Fotos <i class="fa fa-picture-o" aria-hidden="true"></i></h3>
+                <form action="{{route('imageUpload')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+        
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+        
+                    <div class="user-image mb-3 text-center">
+                        <div class="imgPreview"> </div>
+                    </div>            
+        
+                    <div class="custom-file">
+                       
+        
+                        <input type="file" name="imageFile[]" class="custom-file-input" id="images" multiple="multiple">
+                      
+                         <label class="custom-file-label" for="images" data-browse="Elegir imagen">click aqui para Elegir imagen</label>
+                       
+                         
+                    </div>
+                    <input name="action_id" type="hidden" value="{{ $action->id }}">
+                    <button type="submit" name="submit" class="btn btn-primary btn-block mt-2">
+                       Click para Subir las imágenes 
+                    </button>
+                </form>
+            </div>
         </div>
+
+
+        
     </div>
 @endsection
 
@@ -35,4 +116,41 @@
             bsCustomFileInput.init();
         });
     </script>
+    
+  
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+       
+       
+        
+        $(function() {
+        // Multiple images preview with JavaScript
+        var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img width="200" height="100" >')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#images').on('change', function() {
+            multiImgPreview(this, 'div.imgPreview');
+        });
+        });    
+    </script>
+
+
+
+
 @endsection

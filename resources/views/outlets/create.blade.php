@@ -118,7 +118,7 @@ var mapCenter = [{{ request('latitude', config('leaflet.map_center_latitude')) }
                     </div>
                     
                    
-                      <div class="row">
+                      <div class="d-none">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="latitude" class="control-label">{{ __('outlet.latitude') }}</label>
