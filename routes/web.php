@@ -188,25 +188,25 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('projects/{project}',    [ProjectController::class, 'show'])->name('projects.show');
 
 
+    Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
 
+    
+    Route::resource('outlets', OutletController::class);
+    Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
+    
+    
+    // Create image upload form
+    Route::get('/image-upload', 'FileUpload@createForm');
+    
+    // Store image
+    Route::post('/image-upload', [FileUpload::class, 'fileUpload'])->name('imageUpload');
     Route::get('/orderItems', [OrderItemController::class, 'index'])->name('orderItems.index');
 
     Route::get('/download', function () {
         return response()->download(base_path('public/documents/FORMULARIO_INICIO.pdf'));
     });
 
-    Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
-
-    
-Route::resource('outlets', OutletController::class);
-Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');
-
-
-// Create image upload form
-Route::get('/image-upload', 'FileUpload@createForm');
-
-// Store image
-Route::post('/image-upload', [FileUpload::class, 'fileUpload'])->name('imageUpload');
+  
 /*
 Route::get('/image-upload', function () {
      echo('/login11111111');
