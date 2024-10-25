@@ -29,7 +29,7 @@
                     <!-- Aquí debes cargar los localidads desde tu base de datos -->
                     @foreach ($entidades as $entidad)
                         <option value="{{ $entidad->id }}" {{ $action->entity_id == $entidad->id ? 'selected' : '' }}>
-                            {{ $entidad->nombre }}
+                            {{ $entidad->nombre }} - {{optional($entidad->entidad_padre)->nombre}}
                         </option>
                     @endforeach
                     
@@ -43,7 +43,7 @@
                     <!-- Aquí debes cargar los localidads desde tu base de datos -->
                     @foreach ($personas as $persona)
                         <option value="{{ $persona->id }}" {{ $action->team_id == $persona->id ? 'selected' : '' }}>
-                            {{ $persona->nombre }} {{ $persona->apellido }}
+                            {{ $persona->apellido }}, {{ $persona->nombre }}
                         </option>
                     @endforeach
                     
@@ -85,7 +85,7 @@
                     <!-- Aquí debes cargar los localidads desde tu base de datos -->
                     @foreach ($localidades as $localidad)
                         <option value="{{ $localidad->id }}" {{ $action->localidad_id == $localidad->id ? 'selected' : '' }}>
-                            {{ $localidad->nombre }}
+                            {{ $localidad->nombre }} - {{$localidad->departamento->nombre}}
                         </option>
                     @endforeach
                     

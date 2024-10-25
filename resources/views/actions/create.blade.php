@@ -29,7 +29,7 @@
                     <select name="entity_id" class="form-control" required>
                         <!-- Aquí debes cargar los departamentos desde tu base de datos -->
                         @foreach ($entidades as $entidad)
-                            <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
+                            <option value="{{ $entidad->id }}">{{ $entidad->nombre }} - {{optional($entidad->entidad_padre)->nombre}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -38,7 +38,7 @@
                     <select name="team_id" class="form-control" required>
                         <!-- Aquí debes cargar los team_id desde tu base de datos -->
                         @foreach ($personas as $persona)
-                            <option value="{{ $persona->id }}"> {{ $persona->nombre }} {{ $persona->apellido }}</option>
+                            <option value="{{ $persona->id }}"> {{ $persona->apellido }},  {{ $persona->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -68,7 +68,7 @@
                     <select name="localidad_id" class="form-control" required>
                         <!-- Aquí debes cargar los departamentos desde tu base de datos -->
                         @foreach ($localidades as $localidad)
-                            <option value="{{ $localidad->id }}">{{ $localidad->nombre }}</option>
+                            <option value="{{ $localidad->id }}">{{ $localidad->nombre }} - {{$localidad->departamento->nombre}}</option>
                         @endforeach
                     </select>
                 </div>

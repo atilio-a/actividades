@@ -43,12 +43,12 @@ class ActionController extends Controller
     public function create()
     {
            // Cargar todos los departamentos desde la base de datos
-        $localidades = Localidad::all();
-        $entidades = Entity::all();
-        $personas = Team::all();
+        $localidades = Localidad::orderBy('nombre', 'asc')->get();
+        $entidades = Entity::orderBy('nombre', 'asc')->get();
+        $personas = Team::orderBy('apellido', 'asc')->get();
 
-        $programs = Program::all();
-        $projects = Project::all();
+        $programs = Program::orderBy('nombre', 'asc')->get();
+        $projects = Project::orderBy('nombre', 'asc')->get();
         return view('actions.create', compact('programs','projects','personas','localidades','entidades'));
     }
 
@@ -104,11 +104,13 @@ class ActionController extends Controller
     // Mostrar el formulario para editar una action
     public function edit(action $action)
     {  
-        $localidades = Localidad::all();
-        $entidades = Entity::all();
-        $personas = Team::all();
-        $programs = Program::all();
-        $projects = Project::all();
+             // Cargar todos los departamentos desde la base de datos
+             $localidades = Localidad::orderBy('nombre', 'asc')->get();
+             $entidades = Entity::orderBy('nombre', 'asc')->get();
+             $personas = Team::orderBy('apellido', 'asc')->get();
+     
+             $programs = Program::orderBy('nombre', 'asc')->get();
+             $projects = Project::orderBy('nombre', 'asc')->get();
        
         return view('actions.edit', compact('action','programs','projects','personas','localidades','entidades'));
 
