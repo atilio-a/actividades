@@ -80,12 +80,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="programa">
-                            <strong>Descripcion de la actividad:</strong>
+                        <label for="descripcion">
+                            <strong>Descripción de la actividad:</strong>
                         </label>
-                    <input type="text" name="nombre" class="form-control" id="first_name" placeholder="Nombre" disabled
-                        value="{{ old('descripcion:',  $action->descripcion . '- codigo:  ' . $action->codigo) }}">
+                        <textarea name="descripcion" class="form-control" id="descripcion" placeholder="Descripción de la actividad" disabled rows="4">
+                            {{ old('descripcion', $action->descripcion . "\n- Código: " . $action->codigo) }}
+                        </textarea>
                     </div>
+                    
 
                 </div>
 
