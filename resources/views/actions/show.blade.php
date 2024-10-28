@@ -22,7 +22,7 @@
                 @csrf
                 @method('PUT')
 
-                <div class="form-group col-lg-8 col-8">
+                <div class="form-group col-lg-12 col-12">
                     <div class="form-group">
                         <label for="programa">
                             <strong>Actividad:</strong>
