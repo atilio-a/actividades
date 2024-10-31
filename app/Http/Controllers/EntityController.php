@@ -16,7 +16,7 @@ class EntityController extends Controller
             $search = $request->search;
             $query->where('nombre','LIKE', "%$search%")
                 ->orWhere('descripcion','LIKE',"%$search%")
-                ->orWhereHas('entity',function($q) use ($search){
+                ->orWhereHas('entidad_padre',function($q) use ($search){
                     $q->where('nombre','LIKE',"%$search");
                 });
         }

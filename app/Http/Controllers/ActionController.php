@@ -25,6 +25,8 @@ class ActionController extends Controller
             // Filtramos las acciones por el contenido de las columnas 'nombre' y 'descripcion', o por el nombre de la localidad
             $query->where('nombre', 'LIKE', "%$search%")
                 ->orWhere('descripcion', 'LIKE', "%$search%")
+                ->orWhere('fecha', 'LIKE', "%$search%")
+                
                 ->orWhereHas('localidad', function ($q) use ($search) {
                     $q->where('nombre', 'LIKE', "%$search%");
                 })

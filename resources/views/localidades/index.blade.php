@@ -17,7 +17,21 @@
 
 @section('content')
     <div class="card">
+        
         <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="GET" action="{{ route('localidades.index') }}" class="row">
+                        <div class="col-md-6">
+                            <input type="input" name="search" class="form-control" placeholder="Buscar..." value="{{ request()->get('search') }}">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-filter"></i> Buscar </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>

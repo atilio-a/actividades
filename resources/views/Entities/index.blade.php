@@ -3,12 +3,7 @@
 @section('title', ' Entidades')
 @section('content-header', ' Entidades')
 @section('content-actions')
-    <form method="GET" action="{{ route('localidades.index') }}" class="form-inline">
-        <input type="text" name="search" class="form-control w-75" placeholder="Buscar..."
-            value="{{ request()->get('search') }}">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-    </form>
-    <br>
+    
     <a href="{{ route('entities.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Registar nueva Entidad</a>
 @endsection
 @section('css')
@@ -17,6 +12,20 @@
 
 @section('content')
     <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="GET" action="{{ route('entities.index') }}" class="row">
+                        <div class="col-md-6">
+                            <input type="input" name="search" class="form-control" placeholder="Buscar..." value="{{ request()->get('search') }}">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-filter"></i> Buscar </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
         <div class="card-body">
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">

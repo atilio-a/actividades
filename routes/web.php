@@ -153,13 +153,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('localidades/{localidad}',    [LocalidadController::class, 'show'])->name('localidades.show');
     
 
-    Route::resource('entities', EntityController::class);
+    
+    
     Route::get('/entities', [EntityController::class, 'index'])->name('entities.index');
     Route::get('entities/{entity}/edit',   [EntityController::class, 'edit'])->name('entities.edit');
     Route::get('entities/create', [EntityController::class, 'create'])->name('entities.create');
     Route::put('entities/{entity}', [EntityController::class, 'update'])->name('entities.update');
     Route::delete('entities/{entity}', [EntityController::class, 'destroy'])->name('entities.destroy');
     Route::get('entities/{entity}',    [EntityController::class, 'show'])->name('entities.show');
+    Route::resource('entities', EntityController::class);
 
 
     Route::resource('teams', TeamController::class);
