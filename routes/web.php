@@ -28,6 +28,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\ActionStateController;
+use App\Http\Controllers\ActionTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Echo_;
@@ -188,6 +190,24 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::put('projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
     Route::get('projects/{project}',    [ProjectController::class, 'show'])->name('projects.show');
+
+    Route::resource('actionStates', ActionStateController::class);
+    Route::get('/actionStates', [ActionStateController::class, 'index'])->name('actionStates.index');
+    Route::get('actionStates/{actionState}/edit',   [ActionStateController::class, 'edit'])->name('actionStates.edit');
+    Route::get('actionStates/create', [ActionStateController::class, 'create'])->name('actionStates.create');
+    Route::put('actionStates/{actionState}', [ActionStateController::class, 'update'])->name('actionStates.update');
+    Route::delete('actionStates/{actionState}', [ActionStateController::class, 'destroy'])->name('actionStates.destroy');
+    Route::get('actionStates/{actionState}',    [ActionStateController::class, 'show'])->name('actionStates.show');
+
+    Route::resource('actionTypes', ActionTypeController::class);
+    Route::get('/actionTypes', [ActionTypeController::class, 'index'])->name('actionTypes.index');
+    Route::get('actionTypes/{actionState}/edit',   [ActionTypeController::class, 'edit'])->name('actionTypes.edit');
+    Route::get('actionTypes/create', [ActionTypeController::class, 'create'])->name('actionTypes.create');
+    Route::put('actionTypes/{actionState}', [ActionTypeController::class, 'update'])->name('actionTypes.update');
+    Route::delete('actionTypes/{actionState}', [ActionTypeController::class, 'destroy'])->name('actionTypes.destroy');
+    Route::get('actionTypes/{actionState}',    [ActionTypeController::class, 'show'])->name('actionTypes.show');
+
+
 
 
     Route::get('/our_outlets', [OutletMapController::class, 'index'])->name('outlet_map.index');

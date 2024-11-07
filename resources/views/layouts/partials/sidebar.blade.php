@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-purple elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        <img src="{{ asset('images/logo.jpg') }}" alt=" Logo" class="brand-image img-circle-32 elevation-1"
+        <img src="{{ asset('images/logoblanco.png') }}" alt=" Logo" class="brand-image img-circle-32 elevation-1"
             style="max-height:40px;opacity: .8">
         <span class="brand-text font-weight-light">Actividades</span>
     </a>
@@ -69,6 +69,18 @@
                     <a href="{{ route('projects.index') }}" class="nav-link {{ activeSegment('project') }}">
                         <i class="nav-icon fas fa-address-book"></i>
                         <p>Poyectos</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('actionStates.index') }}" class="nav-link {{ activeSegment('actionState') }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>Estados</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('actionTypes.index') }}" class="nav-link {{ activeSegment('actionType') }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>Tipos</p>
                     </a>
                 </li>
 
